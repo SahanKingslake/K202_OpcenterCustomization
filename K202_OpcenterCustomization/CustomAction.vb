@@ -1187,7 +1187,6 @@ Public Class CustomAction
                             preactor.WriteField("Orders", "K202_ErpOrderNo", newBlock, returnNewReferenceOrderNo)
                             preactor.WriteField("Orders", "Mid Batch Quantity", newBlock, 0)
                             '' Update the Operation sequence - 03-04-2022
-                            '' 23-06-2022 - preactor.WriteField("Orders", "Opr. Sequence", newBlock, strSuffix)
 
                             '' Update the Order Type - 03-04-2022
                             preactor.WriteField("Orders", "Order Type", newBlock, "SPLIT")
@@ -1204,7 +1203,6 @@ Public Class CustomAction
                             K202_UpdateSerialsForJobSplit(connetionString, strOrderNo.Substring(1, 1), strOrderNo.Substring(2, 1))
 
                             If K203_OrderSerialRecordNumber <= 0 Then
-                                '' Create record for K203_OrderSerial
                                 Dim newBlock_K203_OrderSerial As Integer = preactor.CreateRecord("K202_OrderSerial")
                                 Dim K203_OrderSerialRecordNum As Integer = preactor.ReadFieldInt("K202_OrderSerial", "RecordId", newBlock_K203_OrderSerial)
                                 preactor.WriteField("K202_OrderSerial", "Op. No.", newBlock_K203_OrderSerial, intOPNo)
